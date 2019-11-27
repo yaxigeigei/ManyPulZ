@@ -1,0 +1,70 @@
+﻿<Window x:Class="ManyPulZ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="250" Width="220" Closing="Window_Closing_1" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown_1">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.75*" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.ColumnSpan="2" >
+            <TabItem Header="Setting">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Serial Port Name" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <ComboBox Name="comComboBox" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Center" SelectionChanged="comComboBox_SelectionChanged_1"/>
+                    <Button Name="connectButton" Content="Connect" Grid.Row="1" Grid.Column="1" Height="25" Click="connectButton_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Parameters">
+                <Grid Name="parasGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Pulse Width (ms)" FontSize="12" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" />
+                    <TextBox Name="pulseWidthTextBox" Grid.Row="0" Grid.Column="1" Height="25" VerticalAlignment="Center" Text="{Binding pulseWidth, Mode=TwoWay}"/>
+                    <Label Content="Pulse Interval (ms)" FontSize="12" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center" />
+                    <TextBox Name="pulseItvTextBox" Grid.Row="1" Grid.Column="1" Height="25" VerticalAlignment="Center" Text="{Binding pulseInterval, Mode=TwoWay}" />
+                    <Label Content="Pulse Number" FontSize="12" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" />
+                    <TextBox Name="pulseNumTextBox" Grid.Row="2" Grid.Column="1" Height="25" VerticalAlignment="Center" Text="{Binding pulseNum, Mode=TwoWay}" />
+                    <Label Content="Repeat Number" FontSize="12" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center" />
+                    <TextBox Name="repeatNumTextBox" Grid.Row="3" Grid.Column="1" Height="25" VerticalAlignment="Center" Text="{Binding repeatNum, Mode=TwoWay}" />
+                    <Label Content="Repeat Interval (ms)" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center" />
+                    <TextBox Name="repeatItvTextBox" Grid.Row="4" Grid.Column="1" Height="25" VerticalAlignment="Center" Text="{Binding repeatInterval, Mode=TwoWay}" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Monitor">
+                <Grid>
+                    <ListBox Name="serialMonitorListBox" MouseDoubleClick="serialMonitorListBox_MouseDoubleClick"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Name="fireButton" Content="Fire" FontSize="18" Grid.Row="1" IsEnabled="False" Click="fireButton_Click" Grid.ColumnSpan="2" Background="White" />
+        <Button Name="minButton" Grid.Row="2" Grid.Column="0" Content="—" VerticalContentAlignment="Center" Click="minButton_Click" Background="White" />
+        <Button Name="closeButton" Grid.Row="2" Grid.Column="1" Content="X" VerticalContentAlignment="Center" Click="closeButton_Click" Background="White" />
+    </Grid>
+</Window>
